@@ -15,26 +15,12 @@
 # add_letters('y', 'c', 'b') = 'd' # notice the letters overflowing
 # add_letters() = 'z'
 def add_letters (*letters):
-    alpha = ['a', 'b', 'c', 'd', 'e', 'f','g', 'h', 'i','j', 'k', 'l','m', 'n', 'o','p', 'q', 'r','s', 't', 'u','v', 'w', 'x','y', 'z']
-    x = []
-    total = 0
-
-    if len(letters) == 0:
+    
+    if not letters: 
         return 'z'
 
-    for v in letters:
-        x.append(v)
-
-    print (x.sort())
-
-    for currValue in letters:
-        total = total + alpha.index(currValue) + 1
-
-    if total >= 25:
-        total = total - 25
-
-    return alpha[total - 1]
-
+    return chr(ord('a') + (sum(map(lambda char:ord(char)-ord('a')+1 , letters))-1)%26)
+  
 def main():
     print(add_letters ('b','z','a'))
 
